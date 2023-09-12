@@ -20,7 +20,7 @@
                 <div class="input-group mb-2 w-75">
                     <input type="text" class="form-control" placeholder="Buscar tarea" aria-label="Buscar tarea" 
                         (input)="filter()" [(ngModel)]="searchTerm">
-                    <button class="btn btn-outline-secondary" type="button" id="btn-add-task" (click)="filter()">Buscar</button>
+                    <button class="btn btn-primary" type="button" id="btn-add-task" (click)="filter()">Buscar</button>
                 </div>
                 <ul class="list-group mb-0" *ngIf="filterTasks.length > 0; else notDataTpl">
                  <li *ngFor="let task of filterTasks; let i = index"
