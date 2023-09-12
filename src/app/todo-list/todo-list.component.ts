@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class TodoListComponent {
   editableId: number | null = null;
   newTask: string = '';
+
+  searchTerm: string = '';
+
+  filterTasks: any[] = [];      // Almacenara las tareas filtradas por el buscador de tareas
+
   tasks: any[] = [
     {
       title: 'Crear la lista de tareas',
@@ -30,6 +35,7 @@ export class TodoListComponent {
     }
     this.tasks.push(task);
     this.newTask = '';
+    this.filter();         // Se activa la funcion, despues de agregar una tarea
   }
   
   updateTask(task: any, title: string) {
@@ -54,4 +60,21 @@ export class TodoListComponent {
     this.editableId = null;
     this.updateTask(task, title);
   }
+
+
+  filter() {            // Aplicamos el criterio de busqueda 
+    const searchTerm = this.searchTerm.toLowerCase();
+    if (searchTerm === '') {
+      this.filterTasks = this.tasks;
+    } else {
+      this.filterTasks = this.tasks.filter((task) =>
+        task.title.toLowerCase().includes(searchTerm)
+      );
+    }
+  }
+
+  ngOnInit() {          // Esta funcion sirve para cuando la pagina inicie o se cargue se muestre la lista de tareas 
+    this.filter();
+  }
+
 }
