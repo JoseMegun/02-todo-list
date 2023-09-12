@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class TodoListComponent {
   editableId: number | null = null;
   newTask: string = '';
-
   searchTerm: string = '';
 
   filterTasks: any[] = [];      // Almacenara las tareas filtradas por el buscador de tareas
@@ -60,7 +59,6 @@ export class TodoListComponent {
     this.editableId = null;
     this.updateTask(task, title);
   }
-
 
   filter() {            // Aplicamos el criterio de busqueda 
     const searchTerm = this.searchTerm.toLowerCase();
